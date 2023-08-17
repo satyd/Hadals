@@ -7,16 +7,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.levp.hadals.util.Depths
 
-class BackgroundAdapter() :
+class BackgroundAdapter(private val onClick: (View, Int) -> Unit) :
     RecyclerView.Adapter<BackgroundAdapter.BgViewHolder>() {
 
     companion object {
         private const val rowCount = Depths.Bathypelagic
-        private val RowList = List<Int>(rowCount) { it + 1 }
+        private val RowList = List(rowCount) { it + 1 }
+        private val borderThresholds =
+            listOf(Depths.Epipelagic, Depths.Mesopelagic, Depths.Bathypelagic, Depths.Abyssopelagic)
     }
 
-    class BgViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView = itemView.findViewById<TextView>(R.id.bgTv)
+    class BgViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+        //val textView = itemView.findViewById<TextView>(R.id.bgTv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BgViewHolder {
@@ -26,13 +29,12 @@ class BackgroundAdapter() :
         return BgViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(bgViewHolder: BgViewHolder, position: Int) {
-        val bgValue = RowList[position]
-        bgViewHolder.textView.text = "$bgValue"
+        //val index = RowList[position]
+        bgViewHolder.itemView.setOnClickListener { onClick(bgViewHolder.itemView, position) }
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+
     override fun getItemCount() = RowList.size
 
 }
