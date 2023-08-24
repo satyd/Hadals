@@ -1,4 +1,4 @@
-package com.levp.hadals
+package com.levp.hadals.recycler
 
 import android.graphics.Rect
 import android.view.View
