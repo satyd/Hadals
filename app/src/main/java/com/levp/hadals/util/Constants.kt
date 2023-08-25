@@ -7,3 +7,7 @@ object Depths {
     const val Abyssopelagic = 6000
     const val Hadopelagic = 13000
 }
+
+object Constants {
+    const val bgItemHeightMultiplier = 4
+}

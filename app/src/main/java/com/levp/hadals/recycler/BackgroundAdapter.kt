@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.levp.hadals.R
-import com.levp.hadals.data.Species
 import com.levp.hadals.util.Depths
 
 class BackgroundAdapter(
