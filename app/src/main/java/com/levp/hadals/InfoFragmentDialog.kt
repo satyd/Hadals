@@ -19,7 +19,9 @@ class InfoFragmentDialog : DialogFragment() {
             val name = requireArguments().getString(NAME)!!
             val description = requireArguments().getString(DESCRIPTION)!!
             val link = requireArguments().getString(LINK)!!
-            speciesData = Species(title, name, description, 0, link)
+            val depthMin = requireArguments().getInt(DEPTH_MIN)
+            val depthMax = requireArguments().getInt(DEPTH_MAX)
+            speciesData = Species(title, name, depthMin to depthMax, description, 0, link)
         }
     }
 
@@ -31,9 +33,13 @@ class InfoFragmentDialog : DialogFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view =
             SpeciesDataBinding.inflate(inflater)
-        view.title.text = speciesData.title
-        view.name.text = speciesData.scientificName
-        view.description.text = speciesData.description
+        with(speciesData) {
+            view.title.text = title
+            view.name.text = scientificName
+            view.description.text = description
+            view.depthRange.text =
+                getString(R.string.info_depths_range, depthRange.first, depthRange.second)
+        }
         return view.root
     }
 
@@ -44,6 +50,8 @@ class InfoFragmentDialog : DialogFragment() {
         args.putString(NAME, species.scientificName)
         args.putString(DESCRIPTION, species.description)
         args.putString(LINK, species.link)
+        args.putInt(DEPTH_MIN, species.depthRange.first)
+        args.putInt(DEPTH_MAX, species.depthRange.second)
         fragment.arguments = args
         return fragment
     }
@@ -53,5 +61,7 @@ class InfoFragmentDialog : DialogFragment() {
         const val NAME = "scientificName"
         const val DESCRIPTION = "description"
         const val LINK = "link"
+        const val DEPTH_MIN = "minDepth"
+        const val DEPTH_MAX = "maxDepth"
     }
 }

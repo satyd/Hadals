@@ -9,5 +9,5 @@ object Depths {
 }
 
 object Constants {
-    const val bgItemHeightMultiplier = 4
+    const val scale = 4
 }

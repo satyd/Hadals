@@ -2,7 +2,8 @@
     <string name="app_name">Hadals</string>
     <string name="info_title">Oarfish</string>
     <string name="info_name">Regalecus glesne</string>
-    <string name="info_description">These giant fish dwell in the twilight zone and are rarely seen on the surface.</string>
+    <string name="info_depths_range">Depths range: %d - %d</string>
+    <string name="info_description">These giant fi sh dwell in the twilight zone and are rarely seen on the surface.</string>
     <string name="info_link">https://youtu.be/9FqwhW0B3tY?si=E3D2Etef_Vn54TPF&amp;t=1120</string>
     <string name="info_more"><u>More…</u></string>
 </resources>

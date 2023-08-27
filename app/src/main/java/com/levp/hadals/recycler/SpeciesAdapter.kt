@@ -1,10 +1,13 @@
 package com.levp.hadals.recycler
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
 import com.levp.hadals.R
 import com.levp.hadals.data.SpeciesItem
+import com.levp.hadals.util.Constants.scale
 import com.levp.hadals.util.Depths
 
 class SpeciesAdapter(
@@ -36,15 +39,16 @@ class SpeciesAdapter(
         val newItem = speciesList[position]
         when (newItem) {
             is SpeciesItem.Spacer -> {
-                holder.itemView.layoutParams = ViewGroup.LayoutParams(0, newItem.height)
+                holder.itemView.layoutParams = ViewGroup.LayoutParams(0, newItem.height * scale)
             }
 
             is SpeciesItem.Species -> {
                 holder.bind(newItem.imageResource)
                 holder.itemView.setOnClickListener { onClick(newItem) }
+                holder.itemView.layoutParams =
+                    ViewGroup.LayoutParams(newItem.imageWidth * scale, newItem.imageHeight * scale)
             }
         }
-
     }
 
 
