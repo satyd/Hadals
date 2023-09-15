@@ -21,7 +21,7 @@ class InfoFragmentDialog : DialogFragment() {
             val link = requireArguments().getString(LINK)!!
             val depthMin = requireArguments().getInt(DEPTH_MIN)
             val depthMax = requireArguments().getInt(DEPTH_MAX)
-            speciesData = Species(title, name, depthMin to depthMax, description, 0, link)
+            speciesData = Species(title, name, depthMin, depthMax, description, 0, link)
         }
     }
 
@@ -38,7 +38,7 @@ class InfoFragmentDialog : DialogFragment() {
             view.name.text = scientificName
             view.description.text = description
             view.depthRange.text =
-                getString(R.string.info_depths_range, depthRange.first, depthRange.second)
+                getString(R.string.info_depths_range, depthMin, depthMax)
         }
         return view.root
     }
@@ -50,8 +50,8 @@ class InfoFragmentDialog : DialogFragment() {
         args.putString(NAME, species.scientificName)
         args.putString(DESCRIPTION, species.description)
         args.putString(LINK, species.link)
-        args.putInt(DEPTH_MIN, species.depthRange.first)
-        args.putInt(DEPTH_MAX, species.depthRange.second)
+        args.putInt(DEPTH_MIN, species.depthMin)
+        args.putInt(DEPTH_MAX, species.depthMax)
         fragment.arguments = args
         return fragment
     }

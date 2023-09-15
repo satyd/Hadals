@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.levp.hadals"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.levp.hadals"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +50,21 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("com.github.bumptech.glide:glide:4.14.2")
 
+    val room_version = "2.5.2"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+
+    // optional - RxJava3 support for Room
+    implementation("androidx.room:room-rxjava3:$room_version")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    // Рекомендуется так же добавить зависимость последней версии RxJava
+    // для устранения багов и добавления новых функций
+    // (https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
